@@ -1,0 +1,17 @@
+{
+  "title": "场景教程",
+  "pages": [
+    "messaging-overview",
+    "feishu",
+    "telegram",
+    "cron",
+    "memory-skills",
+    "tools",
+    "skills-authoring",
+    "context-soul",
+    "security-basics",
+    "subagents",
+    "voice-mode",
+    "mcp"
+  ]
+}

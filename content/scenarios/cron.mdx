@@ -1,0 +1,36 @@
+---
+title: 定时自动化
+description: 用自然语言创建 cron 任务并投递到任意平台
+---
+
+## 什么是 Hermes Cron
+
+内置调度器可用**自然语言**描述周期任务，由 Hermes 在后台执行，并将结果发到 Telegram、Discord、飞书等。
+
+<Callout type="tip">
+仅在 CLI 或单平台 bot **已稳定运行**后再上 cron，否则难以区分是模型问题还是调度问题。
+</Callout>
+
+## 创建任务
+
+在对话中描述需求，例如：
+
+```text
+每天早上 8 点（上海时区）总结 Hacker News AI 头条，发到我的 Telegram。
+```
+
+Agent 会调用 cron 工具写入调度。也可用官方指南中的管理命令查看任务列表。
+
+## 典型场景
+
+| 场景 | 示例 |
+|------|------|
+| 日报 | 行业新闻摘要 |
+| 巡检 | 磁盘、证书、服务健康 |
+| 报告 | 每周 Git 活动汇总 |
+
+详见[官方 automate-with-cron 指南](https://hermes-agent.nousresearch.com/docs/guides/automate-with-cron)。
+
+## 实战
+
+完整 walkthrough：[每日简报机器人](/labs/daily-briefing)、[语音 + 定时自检](/labs/voice-daily-checkin)。

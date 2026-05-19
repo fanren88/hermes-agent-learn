@@ -1,0 +1,53 @@
+---
+title: 语音 + 定时自检
+description: 早晨语音提问，Cron 定时推送今日待办摘要
+---
+
+## 你将得到什么
+
+- 早晨用语音快速问「今天有什么待办」
+- 每天固定时间收到一份**待办 / 日历摘要**（CLI 或 Telegram）
+
+## 前置条件
+
+- [语音模式入门](/scenarios/voice-mode)
+- [定时自动化](/scenarios/cron)
+- 已安装 voice 扩展（`hermes doctor`）
+
+## 步骤概览
+
+<Steps>
+<Step title="整理待办来源">
+
+决定摘要来源：本地 TODO 文件、日历 API，或对话中维护的 MEMORY 小节。
+
+</Step>
+<Step title="创建 Cron">
+
+```text
+每个工作日 8:00 Asia/Shanghai，读取我的待办列表，
+用 5 条 bullet 总结，输出到当前 CLI 会话（或我的 Telegram）。
+```
+
+</Step>
+<Step title="配置语音">
+
+对话中 `/voice on`，试跑：「把我今天的待办读一遍」。
+
+</Step>
+<Step title="试跑与迭代">
+
+立即执行一次 cron 验证格式；根据结果调整长度与是否带链接。
+
+</Step>
+</Steps>
+
+## 验收标准
+
+- Cron 在预定时间触发且格式稳定
+- 语音问答能正确读出待办要点
+- 失败时有可理解的错误信息（查 FAQ）
+
+## 扩展阅读
+
+[Use Voice Mode with Hermes](https://hermes-agent.nousresearch.com/docs/guides/use-voice-mode-with-hermes)、[automate-with-cron](https://hermes-agent.nousresearch.com/docs/guides/automate-with-cron)

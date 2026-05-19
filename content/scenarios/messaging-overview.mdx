@@ -1,0 +1,45 @@
+---
+title: 消息网关总览
+description: 从 CLI 到 Telegram、飞书等 20+ 消息平台的架构与配置入口
+---
+
+## 什么是消息网关
+
+消息网关让 Hermes 在 **Telegram、Discord、Slack、飞书、WhatsApp、Matrix** 等平台上作为机器人运行，与 CLI 共享同一套工具、记忆与技能。
+
+## 架构要点
+
+- **一个 gateway 进程** 可同时接入多个平台
+- 各平台**独立会话**与授权白名单
+- 与本地 CLI 共用 `~/.hermes/` 配置与记忆
+
+## 配置入口
+
+<TerminalBlock>
+{`hermes gateway setup    # 交互式配置\nhermes gateway status   # 查看运行状态`}
+</TerminalBlock>
+
+<Callout type="tip" title="前提">
+请先完成[第一次对话](/learn/quickstart)，确保 `hermes` 单独运行正常，再配置网关。
+</Callout>
+
+## 支持的平台（节选）
+
+| 平台 | 典型场景 |
+|------|----------|
+| Telegram | 个人/团队助手 |
+| 飞书 / 钉钉 | 国内企业协作 |
+| Discord | 社区与开发团队 |
+| Slack | 工作区集成 |
+| WhatsApp | 个人消息桥接 |
+| Email / SMS | 通知与轻量交互 |
+
+完整列表见[官方 Messaging 文档](https://hermes-agent.nousresearch.com/docs/user-guide/messaging/index)。
+
+## 安全建议
+
+- 配置**用户白名单**，避免公开 bot 被滥用
+- 生产环境阅读[官方 Security 指南](https://hermes-agent.nousresearch.com/docs/user-guide/security)
+- 敏感操作启用命令审批与容器隔离
+
+下一章：[接入飞书](/scenarios/feishu) 或 [接入 Telegram](/scenarios/telegram)。

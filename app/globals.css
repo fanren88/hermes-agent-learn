@@ -1,0 +1,147 @@
+@import "tailwindcss";
+
+@theme inline {
+  --color-bg-base: #08090a;
+  --color-bg-elevated: #0f1014;
+  --color-bg-card: #14151a;
+  --color-border-subtle: rgba(255, 255, 255, 0.06);
+  --color-text-primary: #f4f4f5;
+  --color-text-secondary: #a1a1aa;
+  --color-text-muted: #71717a;
+  --color-accent-gold: #e8b84b;
+  --color-accent-gold-dim: #a67c2e;
+  --color-accent-success: #4ade80;
+  --color-accent-info: #38bdf8;
+  --color-accent-warn: #fbbf24;
+  --color-accent-danger: #f87171;
+  --font-display: "Noto Serif SC", "Instrument Serif", Georgia, serif;
+  --font-sans: "Noto Sans SC", "Geist", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+}
+
+:root {
+  --bg-base: #08090a;
+  --bg-elevated: #0f1014;
+  --bg-card: #14151a;
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --text-muted: #71717a;
+  --accent-gold: #e8b84b;
+  --accent-gold-dim: #a67c2e;
+  --accent-success: #4ade80;
+  --accent-info: #38bdf8;
+  --accent-warn: #fbbf24;
+  --accent-danger: #f87171;
+  --shadow-card: 0 0 0 1px var(--border-subtle), 0 8px 30px rgba(0, 0, 0, 0.4);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+
+  --fd-background: var(--bg-base);
+  --fd-foreground: var(--text-primary);
+  --fd-muted: var(--bg-elevated);
+  --fd-muted-foreground: var(--text-secondary);
+  --fd-popover: var(--bg-card);
+  --fd-popover-foreground: var(--text-primary);
+  --fd-card: var(--bg-card);
+  --fd-card-foreground: var(--text-primary);
+  --fd-border: var(--border-subtle);
+  --fd-primary: var(--accent-gold);
+  --fd-primary-foreground: #0a0a0a;
+  --fd-secondary: var(--bg-elevated);
+  --fd-secondary-foreground: var(--text-primary);
+  --fd-accent: rgba(232, 184, 75, 0.12);
+  --fd-accent-foreground: var(--accent-gold);
+  --fd-ring: var(--accent-gold);
+}
+
+html {
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg-base);
+  color: var(--text-primary);
+  text-wrap: pretty;
+}
+
+.site-bg {
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -10%, rgba(232, 184, 75, 0.08), transparent),
+    radial-gradient(ellipse 60% 40% at 100% 0%, rgba(56, 189, 248, 0.04), transparent);
+}
+
+.site-bg::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
+
+.shadow-card {
+  box-shadow: var(--shadow-card);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent-gold);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Fumadocs doc body tweaks */
+.prose-hermes {
+  max-width: 42rem;
+  line-height: 1.75;
+}
+
+.prose-hermes h1,
+.prose-hermes h2,
+.prose-hermes h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.02em;
+}
+
+.prose-hermes a {
+  color: var(--accent-gold);
+}
+
+.prose-hermes code:not(pre code) {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+  background: var(--bg-elevated);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius-sm);
+}
+
+.prose-hermes pre {
+  font-family: var(--font-mono);
+  background: var(--bg-elevated) !important;
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+}

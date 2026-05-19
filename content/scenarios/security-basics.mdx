@@ -1,0 +1,47 @@
+---
+title: 个人使用安全设置
+description: 命令审批、白名单与 Docker 隔离，在个人电脑上安全使用 Hermes
+---
+
+Hermes 能执行终端命令、读写文件——个人电脑上务必设好**护栏**，再放开工具能力。
+
+## 核心原则
+
+1. **最小权限**：只开需要的工具与 MCP
+2. **可逆优先**：重要目录先备份，再让 Agent 批量操作
+3. **人工审批**：高风险命令需你确认后再执行
+
+完整指南：[官方 Security](https://hermes-agent.nousresearch.com/docs/user-guide/security)。
+
+## Docker 终端后端
+
+在[配置教程](/learn/config)中已介绍，个人推荐：
+
+<TerminalBlock>
+{`hermes config set terminal.backend docker`}
+</TerminalBlock>
+
+命令在容器内执行，降低误删系统文件的风险。需本机已安装 Docker。
+
+## 消息网关白名单
+
+若使用 Telegram 等网关，**务必**配置允许的用户 ID，避免公开 bot 被陌生人滥用。仅 CLI 使用可跳过网关配置。
+
+## 命令审批
+
+在 `config.yaml` 中可启用命令审批（具体键名以官方文档为准）。启用后，危险 shell 操作会暂停等待你确认。
+
+<Callout type="tip" title="个人用户最低配置">
+`hermes doctor` 通过 + `terminal.backend: docker` + 不暴露 gateway 到公网，已覆盖大部分个人场景。
+</Callout>
+
+## 与工具、MCP 联动
+
+- 限制 toolset：见[内置工具](/scenarios/tools)
+- MCP Token 放 `.env`，按任务启用子集：见[MCP 扩展](/scenarios/mcp)
+
+## 本章自检
+
+- [ ] 已运行 `hermes doctor` 且无关键错误
+- [ ] 已设置 `terminal.backend` 为 docker（或知悉本地执行的风险）
+- [ ] 若使用 gateway，已配置用户白名单

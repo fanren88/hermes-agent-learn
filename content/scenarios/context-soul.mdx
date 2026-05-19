@@ -1,0 +1,60 @@
+---
+title: 上下文与 SOUL.md
+description: 用 SOUL.md 与项目上下文文件塑造助手的语气、边界与项目认知
+---
+
+同样的模型，有人觉得 Hermes「太正式」，有人觉得「太话痨」——差异往往来自**上下文文件**与 **SOUL.md**。
+
+## 三层上下文
+
+| 层级 | 文件 | 作用 |
+|------|------|------|
+| 全局性格 | `~/.hermes/SOUL.md` | 所有对话的默认语气与原则 |
+| 用户画像 | `~/.hermes/USER.md` | 关于你的稳定信息（与记忆互补） |
+| 项目 | 项目根 `.hermes.md` / `AGENTS.md` | 当前仓库的规则与背景 |
+
+官方说明：[Context Files](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files)、[Personality](https://hermes-agent.nousresearch.com/docs/user-guide/features/personality)。
+
+## SOUL.md 示例（个人助手）
+
+```markdown
+你是简洁、友好的中文个人助手。
+- 默认用中文，技术术语保留英文
+- 回答优先给可执行步骤，少废话
+- 不主动建议购买服务或外链推广
+- 涉及删除文件前必须二次确认
+```
+
+保存后新开对话测试语气变化。
+
+## 项目级 `.hermes.md`
+
+在个人笔记仓库根目录：
+
+```markdown
+# 项目：个人知识库
+- 笔记使用 Obsidian 双链
+- 不要批量重命名 .md 文件
+- 引用路径使用相对路径
+```
+
+在该目录启动 `hermes` 时，上述规则每轮注入。
+
+## 与记忆的区别
+
+- **上下文文件**：你**事先写好**的固定规则（人工维护）
+- **记忆**：对话中**逐渐积累**的事实（Agent 策展）
+
+详见[记忆与技能入门](/scenarios/memory-skills)。写技能流程见[编写自己的技能](/scenarios/skills-authoring)。
+
+## 常见误区
+
+- 把所有东西塞进 SOUL：过长会挤占上下文，细则应放技能或项目文件
+- 改完不重启对话：建议 `/save` 后新开一轮验证
+- 与 `/personality pirate` 混淆：斜杠人格是临时趣味模式，SOUL 是持久默认
+
+## 本章自检
+
+- [ ] 已创建或修改 `~/.hermes/SOUL.md` 并感受到语气变化
+- [ ] 能在一个项目目录放置 `.hermes.md` 并验证规则生效
+- [ ] 能说明 SOUL、USER、MEMORY 各自适合写什么

@@ -1,0 +1,33 @@
+---
+title: GitHub PR 自动审查
+description: 监听仓库并对 Pull Request 给出审查意见
+---
+
+## 你将得到什么
+
+向 GitHub 仓库提交 PR 后，Hermes（配合 MCP 或 webhook）自动阅读 diff 并发表评论。
+
+<Callout type="info" title="选读">
+本案例复杂度较高，适合已掌握 MCP 与 gateway 的读者。
+</Callout>
+
+## 前置条件
+
+- GitHub Personal Access Token（`repo` 等必要 scope）
+- 配置 [GitHub MCP](https://hermes-agent.nousresearch.com/docs/guides/use-mcp-with-hermes) 或 webhook 触发
+- 明确审查标准（风格、测试、安全）
+
+## 步骤概要
+
+1. 在 `config.yaml` 启用 `mcp_servers.github`
+2. 编写审查提示词或 Skill：关注什么、忽略什么
+3. 用 webhook 在 `pull_request` 事件触发 Hermes 运行
+4. 将结果以 GitHub Review Comment 形式写回（通过 MCP 工具）
+
+## 注意
+
+- 审查意见仅供参考，不能替代人工 Code Review
+- 注意 Token 权限最小化
+- 对大 PR 可能消耗较多 token，可限制文件数或 diff 大小
+
+官方教程：[GitHub PR Review Agent](https://hermes-agent.nousresearch.com/docs/guides/github-pr-review-agent)。

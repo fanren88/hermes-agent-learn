@@ -1,0 +1,45 @@
+---
+title: CLI 基础用法
+description: 命令、斜杠指令、多行输入与任务中断
+---
+
+## 两种终端界面
+
+| 命令 | 界面 |
+|------|------|
+| `hermes` | 经典 prompt_toolkit CLI |
+| `hermes --tui` | 现代 TUI（模态层、鼠标选择） |
+
+两者共享会话、斜杠命令与配置。
+
+## 常用斜杠命令
+
+输入 `/` 可自动补全：
+
+| 命令 | 作用 |
+|------|------|
+| `/help` | 显示所有命令 |
+| `/tools` | 列出可用工具 |
+| `/model` | 交互切换模型 |
+| `/personality pirate` | 切换人格（趣味） |
+| `/save` | 保存对话 |
+| `/voice on` | 开启语音模式（需安装 voice 扩展） |
+
+## 多行输入
+
+- `Alt+Enter`、`Ctrl+J`：各终端通用
+- `Shift+Enter`：需 Kitty 键盘协议（Kitty、WezTerm、Ghostty 等）
+
+## 中断当前任务
+
+Agent 执行过久时，**直接输入新消息并回车**即可中断并切换指令；`Ctrl+C` 同样有效。
+
+## 其他实用命令
+
+<TerminalBlock>
+{`hermes tools              # 按平台配置工具\nhermes skills search k8s  # 搜索技能\nhermes update             # 更新\nhermes gateway setup      # 配置消息网关（下一章场景教程）`}
+</TerminalBlock>
+
+<Callout type="info">
+入门路径完成后，建议继续学习[消息网关总览](/scenarios/messaging-overview)或[记忆与技能](/scenarios/memory-skills)。
+</Callout>

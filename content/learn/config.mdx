@@ -1,0 +1,54 @@
+---
+title: 配置与选模型
+description: config.yaml 与 .env 的分工，以及国内 Provider 配置要点
+---
+
+## 配置存储位置
+
+Hermes 将**密钥**与**普通配置**分开：
+
+| 类型 | 文件 | 示例 |
+|------|------|------|
+| 密钥 / Token | `~/.hermes/.env` | `OPENROUTER_API_KEY` |
+| 非敏感设置 | `~/.hermes/config.yaml` | `model`、`terminal.backend` |
+
+推荐使用 CLI，会自动写入正确文件：
+
+<TerminalBlock>
+{`hermes config set model anthropic/claude-opus-4.6\nhermes config set terminal.backend docker\nhermes config set OPENROUTER_API_KEY sk-or-...`}
+</TerminalBlock>
+
+## 切换模型
+
+随时运行 `hermes model` 即可更换 Provider，无厂商锁定。
+
+## 国内常用 Provider
+
+<ProviderTable rows={[
+  { name: "通义 / DashScope", env: "DASHSCOPE_API_KEY", note: "Qwen 系列", cn: true },
+  { name: "DeepSeek", env: "DEEPSEEK_API_KEY", note: "直连 API", cn: true },
+  { name: "Kimi / Moonshot", env: "KIMI_API_KEY", note: "含中国区 endpoint", cn: true },
+  { name: "MiniMax 中国", env: "MINIMAX_CN_API_KEY", note: "国内 endpoint", cn: true },
+  { name: "OpenRouter", env: "OPENROUTER_API_KEY", note: "多模型路由", cn: false },
+  { name: "Z.AI / GLM", env: "GLM_API_KEY", note: "智谱模型", cn: true },
+]} />
+
+完整列表见[官方 Providers 文档](https://hermes-agent.nousresearch.com/docs/integrations/providers)。
+
+## 终端后端（可选）
+
+为安全起见，可将命令执行隔离到 Docker 或远程 SSH：
+
+<TerminalBlock>
+{`hermes config set terminal.backend docker\nhermes config set terminal.backend ssh`}
+</TerminalBlock>
+
+## 检查配置
+
+<TerminalBlock>
+{`hermes doctor\nhermes config check`}
+</TerminalBlock>
+
+<Callout type="tip">
+更新 Hermes 后若配置项缺失，可运行 `hermes config migrate`。
+</Callout>

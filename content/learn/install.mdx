@@ -1,0 +1,53 @@
+---
+title: 安装与环境
+description: 在 Linux、macOS 或 WSL2 上安装 Hermes Agent，并了解目录布局
+---
+
+## 快速安装
+
+在 **Linux / macOS / WSL2** 上，使用官方一行安装脚本（跟踪 `main` 分支）：
+
+<TerminalBlock title="安装">
+{`curl -fsSL https://raw.githubusercontent.com/NousResearch/hermes-agent/main/scripts/install.sh | bash`}
+</TerminalBlock>
+
+安装完成后刷新 shell：
+
+<TerminalBlock>
+{`source ~/.bashrc   # 或 source ~/.zshrc\nhermes`}
+</TerminalBlock>
+
+<Callout type="info" title="Windows 用户">
+原生 Windows 支持仍处于早期 beta。最稳妥的方式是在 **WSL2** 内运行上述 Linux 安装命令。也可使用 PowerShell 安装脚本，详见官方 Windows 指南。
+</Callout>
+
+## 安装器做了什么
+
+安装器会自动处理：
+
+- `uv` 与 Python 3.11
+- Node.js 22（浏览器自动化、WhatsApp 桥接）
+- `ripgrep`、`ffmpeg`
+- 克隆仓库并创建虚拟环境
+- 将 `hermes` 加入 PATH
+
+你**不需要**手动安装 Python 或 Node，只需系统上有 `git`。
+
+## 安装目录
+
+| 方式 | 代码位置 | 数据目录 |
+|------|----------|----------|
+| Git 安装（用户） | `~/.hermes/hermes-agent/` | `~/.hermes/` |
+| pip 安装 | site-packages | `~/.hermes/` |
+
+密钥写入 `~/.hermes/.env`，普通配置在 `~/.hermes/config.yaml`。
+
+## 安装后
+
+<TerminalBlock>
+{`hermes model          # 选择模型与 Provider\nhermes setup           # 或运行完整配置向导\nhermes doctor         # 检查环境`}
+</TerminalBlock>
+
+<Callout type="tip" title="排错">
+若提示 `hermes: command not found`，请重新 `source` shell 配置文件，并确认 `~/.local/bin` 在 PATH 中。
+</Callout>

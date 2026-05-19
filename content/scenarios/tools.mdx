@@ -1,0 +1,63 @@
+---
+title: 内置工具怎么用
+description: 理解 Hermes 70+ 内置工具的能力边界，以及如何为个人使用做限制
+---
+
+个人使用 Hermes 时，**工具**决定了 Agent 能替你做什么：读文件、跑命令、搜索网页、写代码等。本章帮你建立工具全景，并学会按需收紧权限。
+
+## 查看可用工具
+
+在对话中输入 `/tools`，或启动后运行：
+
+<TerminalBlock>
+{`hermes tools`}
+</TerminalBlock>
+
+你会看到当前会话可用的工具列表，包括内置工具与已连接的 MCP 工具。
+
+## 工具分类（个人常用）
+
+| 类型 | 示例 | 个人场景 |
+|------|------|----------|
+| 文件与代码 | read_file, write_file | 整理笔记、改脚本 |
+| 终端 | execute_command | 跑本地命令（注意安全） |
+| 网络 | web_search, fetch_url | 查资料、读文档 |
+| 调度 | cron | 定时提醒与摘要 |
+| 记忆 | memory_* | 长期记住偏好 |
+
+完整列表见[官方 Tools 文档](https://hermes-agent.nousresearch.com/docs/user-guide/features/tools)。
+
+## 限制危险工具
+
+个人电脑上建议：
+
+1. 将 `terminal.backend` 设为 `docker`（见[配置教程](/learn/config)）
+2. 阅读[个人使用安全设置](/scenarios/security-basics)
+3. 不启用不需要的 MCP 服务器
+
+<Callout type="warn" title="内置 vs MCP">
+**内置工具**随 Hermes 安装；**MCP 工具**来自外部服务器。两者在 `/tools` 中并列出现，安全策略应一并考虑。
+</Callout>
+
+## 小例子：只查资料不写盘
+
+对 Agent 说：
+
+```text
+帮我搜索 Rust 2024 edition 新特性，用 bullet 总结。
+不要修改我电脑上的任何文件。
+```
+
+观察 `/tools` 中实际调用了哪些工具，建立直觉。
+
+## 常见误区
+
+- **工具越多越好**：个人助手往往只需文件 + 搜索 + 记忆，其余可关。
+- **与技能混淆**：工具是「能力」，技能是「流程说明」；见[记忆与技能入门](/scenarios/memory-skills)。
+- **子代理也会用工具**：委托子任务时同样受 toolset 约束，见[子代理](/scenarios/subagents)。
+
+## 本章自检
+
+- [ ] 能在对话中用 `/tools` 列出至少 5 个当前可用工具
+- [ ] 能说出内置工具与 MCP 工具的区别
+- [ ] 已阅读安全设置教程并知悉如何限制终端执行

@@ -1,0 +1,11 @@
+{
+  "title": "实战工坊",
+  "pages": [
+    "personal-memory-assistant",
+    "custom-skill-workflow",
+    "voice-daily-checkin",
+    "daily-briefing",
+    "team-telegram",
+    "pr-review"
+  ]
+}

@@ -1,0 +1,63 @@
+---
+title: 编写自己的技能
+description: 为重复任务编写 SKILL.md，让 Hermes 按需自动遵循你的流程
+---
+
+当你发现总在重复同一类任务（每周复盘、整理书签、按模板写周报），就该写**技能**而不是每次重新口述。
+
+## 技能是什么
+
+技能是目录中的 `SKILL.md` 文件，描述**怎么做**某类任务。Agent 在任务匹配时按需读取，不占用每轮对话的全部上下文。
+
+入门对比见[记忆与技能入门](/scenarios/memory-skills)；本章聚焦**自己写**。
+
+## 最小技能结构
+
+在 `~/.hermes/skills/my-weekly-review/SKILL.md`：
+
+```markdown
+---
+name: weekly-review
+description: 每周日复盘：总结本周完成、下周计划、阻塞项
+---
+
+## 步骤
+1. 询问用户本周 3 件最重要的事
+2. 用 bullet 输出复盘，控制在 300 字内
+3. 写入 MEMORY.md 中「本周结论」小节（若用户同意）
+```
+
+## 安装与发现
+
+<TerminalBlock>
+{`hermes skills search review\n# 将自建目录链到 skills 路径，或在对话中说明技能位置`}
+</TerminalBlock>
+
+对话中可用 `/skills` 浏览；也可明确说：「按 weekly-review 技能执行」。
+
+## 写好描述的技巧
+
+`description` 字段决定何时被匹配，建议：
+
+- 写**触发词**：周报、复盘、weekly review
+- 写**边界**：不用于日报、不修改 git 仓库
+- 保持一句话，避免过长
+
+## 与记忆配合
+
+| 技能 | 记忆 |
+|------|------|
+| 流程与模板 | 你的偏好与历史结论 |
+| 每次按需加载 | 跨会话自动召回 |
+
+例：技能规定复盘格式，记忆保存「用户喜欢周五晚上复盘」。
+
+## 实战延伸
+
+完整 walkthrough：[定制技能工作流](/labs/custom-skill-workflow)。
+
+## 本章自检
+
+- [ ] 已创建一个含 frontmatter 的 SKILL.md
+- [ ] 能在对话中通过关键词触发该技能
+- [ ] 能区分何时写技能、何时让 Agent 写入记忆

@@ -1,0 +1,51 @@
+---
+title: 团队 Telegram 助手
+description: 多人共用的代码与研究助手
+---
+
+## 你将得到什么
+
+团队成员在 **Telegram 群或私聊** 中向同一 Hermes Bot 提问，获得带工具能力的回答（读仓库、搜网、跑命令等）。
+
+## 架构
+
+```
+团队成员 → Telegram → Hermes Gateway → 模型 + 工具
+                      ↓
+                 ~/.hermes/（共享或分 profile）
+```
+
+## 实施步骤
+
+<Steps>
+<Step title="创建 Bot 并限制访问">
+
+按 [Telegram 教程](/scenarios/telegram) 配置。在 gateway 中设置**允许的用户 ID 列表**，仅团队成员可调用。
+
+</Step>
+<Step title="准备运行环境">
+
+- VPS 或常开机器运行 `hermes gateway`
+- 使用 `docker` 终端后端隔离破坏性命令
+- 阅读[安全文档](https://hermes-agent.nousresearch.com/docs/user-guide/security)
+
+</Step>
+<Step title="注入项目上下文">
+
+在仓库添加 `AGENTS.md` 或 `.hermes.md`，说明技术栈、分支策略、禁止操作。
+
+</Step>
+<Step title="约定使用规范">
+
+- 群聊 @ bot 才响应
+- 敏感仓库用只读 token
+- 禁止在群里粘贴 API Key
+
+</Step>
+</Steps>
+
+<Callout type="tip">
+国内团队可将投递渠道换成飞书，见[接入飞书](/scenarios/feishu)。
+</Callout>
+
+官方指南：[Team Telegram Assistant](https://hermes-agent.nousresearch.com/docs/guides/team-telegram-assistant)。

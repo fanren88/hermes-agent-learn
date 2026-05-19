@@ -1,0 +1,39 @@
+---
+title: MCP 扩展
+description: 连接 Model Context Protocol 服务器并安全过滤工具
+---
+
+## MCP 是什么
+
+[MCP（Model Context Protocol）](https://modelcontextprotocol.io/) 让 Hermes 连接外部**工具服务器**（GitHub、数据库、自定义 API 等），扩展内置工具集。
+
+## 配置示例
+
+在 `~/.hermes/config.yaml` 中添加：
+
+```yaml
+mcp_servers:
+  github:
+    command: npx
+    args: ["-y", "@modelcontextprotocol/server-github"]
+    env:
+      GITHUB_PERSONAL_ACCESS_TOKEN: "ghp_xxx"
+```
+
+保存后重启 Hermes 或 gateway，在 `/tools` 中应能看到 MCP 提供的工具。
+
+## 安全实践
+
+<Callout type="warn" title="务必过滤工具">
+只启用当前任务需要的 MCP 工具。官方支持按名称过滤，避免 Agent 调用过多高风险操作。
+</Callout>
+
+- Token 放在 `.env`，不要写进仓库
+- 为不同环境使用不同 MCP 配置
+- 阅读[Use MCP with Hermes](https://hermes-agent.nousresearch.com/docs/guides/use-mcp-with-hermes)中的模式说明
+
+## 下一步
+
+- 先了解：[内置工具怎么用](/scenarios/tools)
+- 实战：[GitHub PR 自动审查](/labs/pr-review)
+- 参考：[MCP Config Reference](https://hermes-agent.nousresearch.com/docs/reference/mcp-config-reference)

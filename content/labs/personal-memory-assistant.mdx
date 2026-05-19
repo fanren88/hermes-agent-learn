@@ -1,0 +1,48 @@
+---
+title: 个人知识助手
+description: 用记忆、USER.md 与 SOUL.md 搭建越用越懂你的长期助手
+---
+
+## 你将得到什么
+
+30 天使用后，Hermes 能稳定记住你的**工作习惯、常用工具、当前项目**，新开对话不必重复介绍自己。
+
+## 前置条件
+
+- 已完成[快速上手](/learn/quickstart)与[配置](/learn/config)
+- 已阅读[记忆与技能入门](/scenarios/memory-skills)、[上下文与 SOUL.md](/scenarios/context-soul)
+
+## 步骤概览
+
+<Steps>
+<Step title="写好 SOUL 与 USER">
+
+在 `~/.hermes/SOUL.md` 定义语气；在 `USER.md` 写入稳定信息（时区、职业、常用栈）。
+
+</Step>
+<Step title="主动写入记忆">
+
+连续 3 天对话结束时说：「把今天结论写入长期记忆」。检查 `MEMORY.md` 是否增长。
+
+</Step>
+<Step title="项目上下文">
+
+在个人主力项目根目录添加 `.hermes.md`，写清目录结构与禁忌操作。
+
+</Step>
+<Step title="每周回顾">
+
+每周日让 Agent 根据 MEMORY 生成「我这一周在做什么」摘要，纠错过时条目。
+
+</Step>
+</Steps>
+
+## 验收标准
+
+- 新开会话时 Agent 能主动引用你的偏好（如「仍用 pnpm」）
+- `MEMORY.md` 有清晰分段，无大量重复矛盾条目
+- 在主力项目目录中遵守 `.hermes.md` 规则
+
+## 扩展阅读
+
+[官方 Memory 文档](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory)

@@ -1,0 +1,52 @@
+---
+title: 每日简报机器人
+description: 定时研究主题并推送到 Telegram 或 Discord
+---
+
+## 你将得到什么
+
+每天早上在 Telegram（或 Discord）收到一份**结构化简报**，内容由 Hermes 自动检索与总结。
+
+## 前置条件
+
+- 已完成[快速上手](/learn/quickstart)
+- 已配置 [Telegram](/scenarios/telegram) 或 Discord gateway
+- 模型具备联网 / 搜索类工具
+
+## 步骤概览
+
+<Steps>
+<Step title="定义简报范围">
+
+在对话中明确主题、来源与时区，例如：
+
+```text
+创建 cron：每天 8:00 Asia/Shanghai，搜索 AI 开源热点，
+用 5 条 bullet 总结，发到我的 Telegram。
+```
+
+</Step>
+<Step title="确认 cron 已注册">
+
+检查 gateway 日志或官方 cron 管理命令，确认下次运行时间正确。
+
+</Step>
+<Step title="试跑一轮">
+
+可要求「立即执行一次」验证格式，再等待首次定时触发。
+
+</Step>
+<Step title="迭代提示词">
+
+根据首份简报调整：长度、语言、是否带链接、排除话题等。
+
+</Step>
+</Steps>
+
+## 扩展
+
+- 绑定多个技能（如特定行业 RSS）
+- 周末改为周报
+- 失败时发送告警消息
+
+官方完整教程：[Daily Briefing Bot](https://hermes-agent.nousresearch.com/docs/guides/daily-briefing-bot)。

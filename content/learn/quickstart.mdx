@@ -1,0 +1,72 @@
+---
+title: 第一次对话
+description: 从选模型到验证 Hermes 能正常回复并恢复会话
+---
+
+## 原则：先跑通对话
+
+在添加网关、cron、MCP 之前，先完成**一轮正常对话**。若基础聊天不通，不要继续堆功能。
+
+## 1. 选择 Provider
+
+<TerminalBlock>
+{`hermes model`}
+</TerminalBlock>
+
+交互式向导会引导你完成 OAuth 或 API Key 配置。国内常用选项包括：
+
+- **OpenRouter** — 多模型聚合
+- **通义 DashScope** — 设置 `DASHSCOPE_API_KEY`
+- **DeepSeek** — 设置 `DEEPSEEK_API_KEY`
+- **Kimi / Moonshot** — 设置 `KIMI_API_KEY`
+
+<Callout type="warn" title="最低上下文 64K">
+Hermes 要求模型至少 **64,000** token 上下文。过小窗口无法支撑多步工具调用，启动时会被拒绝。
+</Callout>
+
+## 2. 启动对话
+
+<TerminalBlock>
+{`hermes            # 经典 CLI\nhermes --tui      # 现代 TUI（推荐）`}
+</TerminalBlock>
+
+用容易验证的提示词试一轮，例如：
+
+```text
+总结当前目录下项目结构，并指出可能的入口文件。
+```
+
+成功标志：
+
+- 横幅显示已选模型
+- 能正常回复且无报错
+- 需要时可调用终端、读文件等工具
+- 多轮对话连贯
+
+## 3. 验证会话恢复
+
+<TerminalBlock>
+{`hermes --continue`}
+</TerminalBlock>
+
+应回到刚才的会话。若失败，检查是否切换了 profile，或运行 `hermes sessions list`。
+
+## 4. 试试基础能力
+
+| 能力 | 示例 |
+|------|------|
+| 终端 | 「查看磁盘占用最高的 5 个目录」 |
+| 斜杠命令 | 输入 `/` 查看 `/help`、`/tools`、`/model` |
+| 中断 | 任务过长时直接输入新消息并回车 |
+
+## 常见问题
+
+| 现象 | 处理 |
+|------|------|
+| 空回复或报错 | 重新 `hermes model`，核对 Provider 与 Key |
+| 自定义端点异常 | 先用独立客户端验证 URL 与模型名 |
+| `--continue` 无效 | `hermes sessions list`，确认 profile 一致 |
+
+<Callout type="tip">
+排错顺序：`hermes doctor` → `hermes model` → `hermes setup` → `hermes --continue`
+</Callout>

@@ -1,0 +1,48 @@
+---
+title: 定制技能工作流
+description: 为每周复盘或读书摘要等重复任务编写并验证个人技能
+---
+
+## 你将得到什么
+
+一个可被 Hermes **自动匹配**的个人技能（如 `weekly-review`），以后说「做复盘」即可按你的模板执行。
+
+## 前置条件
+
+- 已完成[编写自己的技能](/scenarios/skills-authoring)
+- `hermes doctor` 通过
+
+## 步骤概览
+
+<Steps>
+<Step title="选定重复任务">
+
+例如：每周日晚读书摘要、每月账单分类。写下期望输出格式（字数、章节）。
+
+</Step>
+<Step title="创建 SKILL.md">
+
+在 `~/.hermes/skills/<name>/SKILL.md` 写好 `name`、`description` 与分步说明。
+
+</Step>
+<Step title="试跑三次">
+
+连续三周触发同一关键词，观察 Agent 是否稳定遵循步骤；调整 description 触发词。
+
+</Step>
+<Step title="与记忆联动">
+
+在技能最后一步可选「写入 MEMORY」，保存本周结论供下轮引用。
+
+</Step>
+</Steps>
+
+## 验收标准
+
+- 说触发词后 Agent 按技能步骤执行，不跳步
+- `/skills` 中能看到该技能
+- 输出格式与模板一致
+
+## 扩展阅读
+
+[官方 Skills 文档](https://hermes-agent.nousresearch.com/docs/user-guide/features/skills)

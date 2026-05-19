@@ -1,0 +1,44 @@
+---
+title: 语音模式入门
+description: 在 CLI 与 Telegram 中用语音与 Hermes 对话，适合免打字场景
+---
+
+走路、做饭时想查资料或记待办——**语音模式**让你用说的方式驱动 Hermes，回复仍可为文字或语音（视配置而定）。
+
+## 开启方式
+
+对话中：
+
+```text
+/voice on
+```
+
+或参考[CLI 基础](/learn/cli-basics)中的斜杠命令表。需安装官方 voice 扩展（`hermes doctor` 会提示缺失项）。
+
+## 适用场景（个人）
+
+- 早晨口述今日待办，让 Agent 整理成列表
+- 双手占用时追问上一条回答
+- 结合 Telegram gateway 在手机端语音交互
+
+官方详解：[Voice Mode](https://hermes-agent.nousresearch.com/docs/user-guide/features/voice-mode)、[Use Voice Mode with Hermes](https://hermes-agent.nousresearch.com/docs/guides/use-voice-mode-with-hermes)。
+
+## 与 Cron 组合
+
+可搭建「早晨语音提问 + 定时推送摘要」流水线，见实战 [语音 + 定时自检](/labs/voice-daily-checkin)。
+
+<Callout type="info">
+纯 CLI 用户可不配置 gateway；语音在本地终端即可试用。
+</Callout>
+
+## 常见误区
+
+- 未装 voice 扩展就期望 `/voice on` 可用 → 先 `hermes doctor`
+- 在嘈杂环境识别差 → 缩短句子、关键名词用英文
+- 语音与记忆无关 → 重要结论仍应要求写入记忆
+
+## 本章自检
+
+- [ ] 已知如何开启 `/voice on` 并确认扩展已安装
+- [ ] 能完成一次「口述问题 → 文字回答」闭环
+- [ ] 知悉与 Cron 组合的 Lab 入口

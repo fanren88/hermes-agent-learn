@@ -1,0 +1,40 @@
+---
+title: 记忆与技能入门
+description: 跨会话记忆、技能包与何时该用哪一种
+---
+
+<Callout type="info" title="延伸阅读">
+想深入？继续学习 [编写自己的技能](/scenarios/skills-authoring) 与 [上下文与 SOUL.md](/scenarios/context-soul)。
+</Callout>
+
+## 记忆（Memory）
+
+Hermes 通过 **MEMORY.md**、**USER.md** 与 FTS5 跨会话检索，在多次对话间保留偏好与事实。
+
+- Agent 会**主动**将重要信息写入记忆
+- 可用自然语言要求「记住我喜欢用 pnpm」
+- 详见[官方 Memory 文档](https://hermes-agent.nousresearch.com/docs/user-guide/features/memory)
+
+## 技能（Skills）
+
+技能是**按需加载**的流程文档（`SKILL.md`），教 Agent 完成特定任务（如 K8s 部署、某 API 调用）。
+
+<TerminalBlock>
+{`hermes skills search kubernetes\nhermes skills install <owner/repo/skill>`}
+</TerminalBlock>
+
+对话中也可使用 `/skills` 浏览。
+
+## 何时用记忆 vs 技能
+
+| | 记忆 | 技能 |
+|---|------|------|
+| 内容 | 关于你/项目的**事实** | **怎么做**某类任务 |
+| 加载 | 自动注入相关片段 | 匹配时按需读取 |
+| 维护 | Agent 策展 + 你可编辑 | 社区/自建 SKILL.md |
+
+## 上下文文件
+
+项目中的 `.hermes.md`、`AGENTS.md` 会在每轮对话注入，与记忆互补。见[官方 Context Files](https://hermes-agent.nousresearch.com/docs/user-guide/features/context-files)。
+
+下一章：[内置工具怎么用](/scenarios/tools)，或 [MCP 扩展](/scenarios/mcp)。

@@ -1,0 +1,40 @@
+---
+title: 接入 Telegram
+description: 创建 Bot、配置 gateway 与权限白名单
+---
+
+## 1. 创建 Telegram Bot
+
+1. 在 Telegram 中打开 [@BotFather](https://t.me/BotFather)
+2. 发送 `/newbot`，按提示设置名称与 username
+3. 保存 BotFather 返回的 **HTTP API Token**
+
+## 2. 配置 Hermes Gateway
+
+<TerminalBlock>
+{`hermes gateway setup`}
+</TerminalBlock>
+
+选择 **Telegram**，粘贴 Bot Token。或写入环境变量 / config（见[官方 Telegram 文档](https://hermes-agent.nousresearch.com/docs/user-guide/messaging/telegram)）。
+
+## 3. 启动与验证
+
+<TerminalBlock>
+{`hermes gateway status`}
+</TerminalBlock>
+
+在 Telegram 中向你的 Bot 发送：
+
+```text
+你好，列出你当前可用的工具类别。
+```
+
+## 4. 白名单与群组
+
+- 默认应限制**允许的用户 ID**，避免公开 bot 被刷
+- 群组中通常需要 **@提及** bot 才会响应（可在配置中调整）
+- 团队部署见[团队 Telegram 助手](/labs/team-telegram)
+
+<Callout type="warn">
+切勿将 Bot Token 提交到 Git 或公开频道。Token 应只存在于 `~/.hermes/.env` 或密钥管理系统中。
+</Callout>
