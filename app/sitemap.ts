@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/roadmap",
     "/glossary",
     "/cheatsheet",
+    "/reading",
     "/resources",
     "/faq",
   ].map((path) => ({

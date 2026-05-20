@@ -5,7 +5,6 @@ export const siteConfig = {
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://hermes-learn-zh.vercel.app",
   github: "https://github.com/NousResearch/hermes-agent",
   officialDocs: "https://hermes-agent.nousresearch.com/docs/",
-  nous: "https://nousresearch.com/",
 } as const;
 
 export type DocLevel = "beginner" | "intermediate" | "advanced";

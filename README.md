@@ -25,10 +25,13 @@ pnpm start
 | `content/learn/` | `/learn/*` 入门路径（4 篇） |
 | `content/scenarios/` | `/scenarios/*` 场景教程（12 篇） |
 | `content/labs/` | `/labs/*` 实战工坊（6 篇） |
+| `app/reading/` | `/reading` 延伸阅读（社区精选外链） |
 | `app/roadmap/` | `/roadmap` 个人学习路线图 |
 | `app/glossary/` | `/glossary` 术语表 |
 
 新增教程：在对应目录添加 `.mdx` 并更新 `meta.json` 的 `pages` 数组。
+
+新增延伸阅读：编辑 `lib/curated-articles.ts` 中的 `curatedArticles` 数组。
 
 ## 部署到 Vercel
 

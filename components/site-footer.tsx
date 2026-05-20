@@ -25,18 +25,14 @@ export function SiteFooter() {
           >
             官方英文文档
           </Link>
-          <Link
-            href={siteConfig.nous}
-            className="text-[var(--text-secondary)] hover:text-[var(--accent-gold)]"
-            target="_blank"
-          >
-            Nous Research
-          </Link>
           <Link href="/roadmap" className="text-[var(--text-secondary)] hover:text-[var(--accent-gold)]">
             学习路线
           </Link>
           <Link href="/glossary" className="text-[var(--text-secondary)] hover:text-[var(--accent-gold)]">
             术语表
+          </Link>
+          <Link href="/reading" className="text-[var(--text-secondary)] hover:text-[var(--accent-gold)]">
+            延伸阅读
           </Link>
           <Link href="/faq" className="text-[var(--text-secondary)] hover:text-[var(--accent-gold)]">
             常见问题

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ExternalLink, Github, BookOpen, Youtube } from "lucide-react";
 import { siteConfig } from "@/lib/site";
 
@@ -15,11 +16,6 @@ const sections = [
         label: "GitHub 仓库",
         href: siteConfig.github,
         sub: "NousResearch/hermes-agent",
-      },
-      {
-        label: "Nous Research",
-        href: siteConfig.nous,
-        sub: "nousresearch.com",
       },
     ],
   },
@@ -63,6 +59,13 @@ export default function ResourcesPage() {
       <h1 className="font-display text-3xl font-semibold">资源角</h1>
       <p className="mt-3 text-[var(--text-secondary)]">
         官方文档、视频与社区入口。本站教程无法覆盖的细节，请以下列资源为准。
+      </p>
+      <p className="mt-4 text-sm text-[var(--text-muted)]">
+        第三方深度文章见{" "}
+        <Link href="/reading" className="text-[var(--accent-gold)] hover:underline">
+          延伸阅读
+        </Link>
+        （社区精选，非官方）。
       </p>
       <div className="mt-10 space-y-10">
         {sections.map((section) => (

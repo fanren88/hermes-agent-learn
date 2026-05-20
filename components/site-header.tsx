@@ -12,6 +12,7 @@ const nav = [
   { href: "/roadmap", label: "学习路线" },
   { href: "/scenarios", label: "场景教程" },
   { href: "/labs", label: "实战工坊" },
+  { href: "/reading", label: "延伸阅读" },
   { href: "/resources", label: "资源" },
   { href: "/cheatsheet", label: "命令速查" },
 ];
